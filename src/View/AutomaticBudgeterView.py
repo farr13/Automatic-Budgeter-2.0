@@ -1,4 +1,6 @@
 import customtkinter as customtk
+from Model.Entities import *
+from Control.CategoryControl import *
 
 class MainApp(customtk.CTk):
     def __init__(self):
@@ -22,25 +24,11 @@ class MainApp(customtk.CTk):
         # Run Window
         self.mainloop()
 
-class Show_Categories():
     def __init__(self, parent):
-        self.list = customtk.CTkScrollableFrame(parent)
-        self.list.grid(pady=40,)
-
-        for x in range(20):
-            customtk.CTkButton(self.list, text='Testing').pack(padx=10)
-    
-
-class Create_Category(customtk.CTkButton):
-
-    def button_callback(self):
-        print("This buttom is functioning")
-
-    def __init__(self, parent):
-        self.button = super().__init__(parent, text='Create_Category', command=self.button_callback)
+        self.button = super().__init__(parent, text='Create_Category', command=Create_Category.category_creation(self))
         self.grid(row = 1, column = 0, sticky = '', pady = 20)
     
-
-app = MainApp()
-app.mainloop()
+if __name__ == "__main__":
+    app = MainApp()
+    app.mainloop()
 
