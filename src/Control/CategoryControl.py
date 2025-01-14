@@ -4,12 +4,13 @@ import sys
 sys.path.append('src')
 from Model.Entities import Category_Class
 
-class Create_Category(customtk.CTkButton):
+class Create_Category():
     """Creates and implements the functianality of the (Create Category) button
     """
+
     def __init__(self, parent):
-        self.button = super().__init__(parent, text='Create_Category', command=Create_Category.category_input_box(self))
-        self.grid(row = 1, column = 0, sticky = '', pady = 20)
+        self.button = customtk.CTkButton(parent, text='Create_Category', command=lambda : self.category_input_box())
+        self.button.grid(row = 1, column = 0, sticky = '', pady = 20)
 
     def category_creation(self, name, amount):
         new_category = Category_Class.Category(name, amount)
