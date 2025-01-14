@@ -1,6 +1,6 @@
+import sys
+sys.path.append('src')
 import customtkinter as customtk
-from Model.Entities import Category_Class
-from Model.Entities import History_Class
 from Control.CategoryControl import Show_Categories
 from Control.CategoryControl import Create_Category
 
@@ -25,10 +25,6 @@ class MainApp(customtk.CTk):
 
         # Run Window
         self.mainloop()
-
-    def __init__(self, parent):
-        self.button = super().__init__(parent, text='Create_Category', command=Create_Category.category_creation(self))
-        self.grid(row = 1, column = 0, sticky = '', pady = 20)
     
 if __name__ == "__main__":
     app = MainApp()
