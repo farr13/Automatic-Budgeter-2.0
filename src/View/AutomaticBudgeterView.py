@@ -1,6 +1,8 @@
 import customtkinter as customtk
-from Model.Entities import *
-from Control.CategoryControl import *
+from Model.Entities import Category_Class
+from Model.Entities import History_Class
+from Control.CategoryControl import Show_Categories
+from Control.CategoryControl import Create_Category
 
 class MainApp(customtk.CTk):
     def __init__(self):
