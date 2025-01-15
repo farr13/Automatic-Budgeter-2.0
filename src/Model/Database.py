@@ -1,2 +1,1 @@
-#TO-DO
-# Create database to stores history and categories
+temp_database = []
