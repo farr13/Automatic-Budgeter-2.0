@@ -3,6 +3,20 @@ import customtkinter as customtk
 import sys
 sys.path.append('src')
 from Model.Entities import Category_Class
+from Model.Database import temp_database
+
+class Show_Categories(customtk.CTkScrollableFrame):
+    """Creates and implements the functianality of the (Show Categories) scroll tab
+    """
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.grid(pady=40)
+        customtk.CTkButton(self, text='Tester').grid(padx=10, pady=5)
+
+    def update_display(self):
+        for item in temp_database:
+            print("triggered")
+            customtk.CTkButton(self, text=item.name).grid(padx=10, pady=5)
 
 class Create_Category():
     """Creates and implements the functianality of the (Create Category) button
@@ -14,6 +28,9 @@ class Create_Category():
 
     def category_creation(self, name, amount):
         new_category = Category_Class.Category(name, amount)
+        temp_database.append(new_category)
+        from View.AutomaticBudgeterView import app
+        app.sc.update_display()
         
 
     def category_input_box(self):
@@ -31,14 +48,3 @@ class Create_Category():
                 messagebox.showerror(title="Error", message="No text was input")
         else:
             messagebox.showerror(title="Error", message="No text was input")
-
-class Show_Categories():
-    """Creates and implements the functianality of the (Show Categories) scroll tab
-    """
-    def __init__(self, parent):
-        self.list = customtk.CTkScrollableFrame(parent)
-        self.list.grid(pady=40,)
-
-        #TO-DO 2: Add Categories to List View
-        for x in range(20):
-            customtk.CTkButton(self.list, text='Testing').pack(padx=10)
