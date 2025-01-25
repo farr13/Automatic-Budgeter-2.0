@@ -1,8 +1,7 @@
 import sys
 sys.path.append('src')
 import customtkinter as customtk
-from Control.CategoryControl import Show_Categories
-from Control.CategoryControl import Create_Category
+from Control.CategoryControl import Category_Control
 
 class MainApp(customtk.CTk):
     def __init__(self):
@@ -13,11 +12,8 @@ class MainApp(customtk.CTk):
         self.geometry('400x400')
         self.minsize(200, 200)
 
-        # Show Categories
-        self.sc = Show_Categories(self)
-
-        # Create Category Button
-        self.ccb = Create_Category(self)
+        # Main Menu
+        self.mm = Category_Control(self)
         
         #Center Frames
         self.grid_rowconfigure(0, weight=1)

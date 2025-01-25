@@ -1,1 +1,1 @@
-temp_database = []
+temp_database = {}
