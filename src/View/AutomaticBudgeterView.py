@@ -17,7 +17,7 @@ class MainApp(customtk.CTk):
 
         # Main Menu
         self.cc = Category_Control(self)
-        self.hh = History_Control(self)
+        self.hh = History_Control(self, self.cc)
         
         #Center Frames
         self.grid_rowconfigure(0, weight=1)
