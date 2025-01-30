@@ -6,28 +6,29 @@ from Model.Entities import Category_Class
 from Model.Database import temp_database
 
 class Category_Control():
-    """Creates and implements the functianality of the (Show Categories) scroll tab
+    """Creates and implements the functianality of the Categories 
     """
     def __init__(self, parent):
         # Title
-        self.title = customtk.CTkLabel(parent, text=f"Categories", font=customtk.CTkFont(size=24))
+        self.title = customtk.CTkLabel(parent, text=f"Categories", font=customtk.CTkFont(size=24), fg_color="#262626", text_color="#ffffff")
         self.title.pack(side="top")
+        # Colors
         # Create Category
-        self.create_button = customtk.CTkButton(parent, text='Create_Category', command=lambda : self.category_input_box())
+        self.create_button = customtk.CTkButton(parent, text='Create_Category', command=lambda : self.category_input_box(), bg_color="#000000")
         self.create_button.pack(pady=5, padx=10, anchor="w")
         # Clear All Categories
-        self.clear_button = customtk.CTkButton(parent, text='Clear', command=lambda : self.clear())
+        self.clear_button = customtk.CTkButton(parent, text='Clear', command=lambda : self.clear(), bg_color="#000000")
         self.clear_button.pack(pady=5, padx=10, anchor="w")
         # Remove Category
-        self.remove_button = customtk.CTkButton(parent, text='Remove', command=lambda : self.remove_category())
+        self.remove_button = customtk.CTkButton(parent, text='Remove', command=lambda : self.remove_category(), bg_color="#000000")
         self.remove_button.pack(pady=5, padx=10, anchor="e")
         self.remove_button.place(x=250, y=35)
         # Scrollable Frame of Categories
-        self.scroll_window = customtk.CTkScrollableFrame(parent, width=350, height=250)
+        self.scroll_window = customtk.CTkScrollableFrame(parent, width=350, height=250, fg_color="#666699", bg_color="#000000")
         self.scroll_window.pack(pady=20, padx=20, fill="both", expand=True)
         # Shows Total Money Left
         self.funds = 0
-        self.subtitle = customtk.CTkLabel(parent, text=f"Total Money left: {self.funds}", font=customtk.CTkFont(size=24))
+        self.subtitle = customtk.CTkLabel(parent, text=f"Total Money left: {self.funds}", font=customtk.CTkFont(size=24), fg_color="#262626", text_color="#ffffff")
         self.subtitle.pack(pady=(0, 20), side="bottom")
 
     def add(self, category):

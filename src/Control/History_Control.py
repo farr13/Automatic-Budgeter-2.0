@@ -2,7 +2,6 @@ from tkinter import messagebox
 import customtkinter as customtk
 import sys
 sys.path.append('src')
-from Model.Entities import History_Class
 from Model.Database import temp_history
 from Model.Database import temp_database
 
@@ -10,22 +9,23 @@ class History_Control():
 
     def __init__(self, parent, category_control):
         #Title
-        self.title = customtk.CTkLabel(parent, text=f"Spend History", font=customtk.CTkFont(size=24))
+        self.title = customtk.CTkLabel(parent, text=f"Spend History", font=customtk.CTkFont(size=24), fg_color="#262626", text_color="#ffffff")
         self.title.pack(side="top") 
 
         # Used to acced the category functions
         self.category_controller = category_control
 
         # Add History
-        self.addHistory_button = customtk.CTkButton(parent, text='Add Purchase', command=lambda : self.add(self.category_controller))
+        self.addHistory_button = customtk.CTkButton(parent, text='Add Purchase', command=lambda : self.add(self.category_controller), bg_color="#000000")
         self.addHistory_button.pack(pady=5, padx=10, anchor="nw")
 
         #Clear History
-        self.addHistory_button = customtk.CTkButton(parent, text='Clear History', command=lambda : self.clear())
-        self.addHistory_button.pack(pady=10, padx=10, anchor="ne")
-        self.addHistory_button.place(x=250, y=456)
+        self.clearHistory_button = customtk.CTkButton(parent, text='Clear History', command=lambda : self.clear(), bg_color="#000000")
+        self.clearHistory_button.pack(pady=10, padx=10, anchor="ne")
+        self.clearHistory_button.place(x=250, y=456)
+
         # Scrollable Frame of History
-        self.scroll_window = customtk.CTkScrollableFrame(parent, width=350, height=250)
+        self.scroll_window = customtk.CTkScrollableFrame(parent, width=350, height=250, fg_color="#666699", bg_color="#000000")
         self.scroll_window.pack(pady=20, padx=20, fill="both", expand=True)
         
     
@@ -45,7 +45,7 @@ class History_Control():
             item_label = customtk.CTkLabel(self.scroll_window, 
                                         text=f"Name: {item_name}\nPrice: {item_price}\nDesc: {item_desc}", 
                                         font=customtk.CTkFont(size=16),
-                                        fg_color="red")
+                                        fg_color="#ffffff")
             item_label.pack(side="top")
             temp_history.append({
                 "Name" : item_name,
@@ -57,6 +57,7 @@ class History_Control():
             temp_database[category]["object"].money_allocated -= int(item_price)
             temp_database[category]["label"].configure(text=f"Category: {category}\nMoney Left: ${temp_database[category]["object"].money_allocated}")
             category_object.funds -= int(item_price)
+            category_object.subtitle.configure(text=f"Total Money left: {category_object.funds}")
 
 
         else:

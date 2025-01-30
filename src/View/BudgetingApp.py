@@ -10,6 +10,7 @@ class MainApp(customtk.CTk):
 
         # MainSetup
         self.title('Automatic Budgeter')
+        self._set_appearance_mode('Dark')
         self.geometry('400x860')
         self.minsize(400, 860)
         self.maxsize(400,860)
