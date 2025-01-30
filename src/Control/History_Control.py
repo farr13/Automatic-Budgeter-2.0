@@ -46,7 +46,7 @@ class History_Control():
                                         text=f"Name: {item_name}\nPrice: {item_price}\nDesc: {item_desc}", 
                                         font=customtk.CTkFont(size=16),
                                         fg_color="#ffffff")
-            item_label.pack(side="top")
+            item_label.pack(side="top", pady=10)
             temp_history.append({
                 "Name" : item_name,
                 "Price" : item_price,
